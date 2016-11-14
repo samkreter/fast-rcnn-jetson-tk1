@@ -147,7 +147,7 @@ if __name__ == '__main__':
 
     print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
     print 'Demo for data/demo/000004.jpg'
-    demo(net, '000004', ('car',))
+    demo(net, 'happy', ('car',))
 
     print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
     print 'Demo for data/demo/001551.jpg'
