@@ -47,6 +47,7 @@ def vis_detections(im, class_name, dets, thresh=0.5):
     """Draw detected bounding boxes."""
     inds = np.where(dets[:, -1] >= thresh)[0]
     if len(inds) == 0:
+        print("nothing")
         return
 
     im = im[:, :, (2, 1, 0)]
@@ -80,7 +81,7 @@ def vis_detections(im, class_name, dets, thresh=0.5):
 def run_dlib_selective_search(image_name):
     img = io.imread(image_name)
     rects = []
-    dlib.find_candidate_object_locations(img,rects,min_size=70)
+    dlib.find_candidate_object_locations(img,rects,min_size=50)
     proposals = []
     for k,d in enumerate(rects):
         templist = [d.left(),d.top(),d.right(),d.bottom()]
@@ -167,10 +168,12 @@ if __name__ == '__main__':
 
     print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
     print 'Demo for data/demo/000004.jpg'
-    demo(net, 'happy1', ('car',))
+    #demo(net, 'happy1', ('car',))
+    demo(net, 'ped1Big', ('person',))
 
     print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
     print 'Demo for data/demo/001551.jpg'
+
     #demo(net, 'happy', ('sofa', 'tvmonitor'))
 
     plt.show()
