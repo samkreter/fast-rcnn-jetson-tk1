@@ -108,12 +108,14 @@ def demo(net, image_name, classes):
     timer = Timer()
     timer.tic()
     scores, boxes = im_detect(net, im, obj_proposals)
+    # print(scores[:,CLASSES.index('person')])
+    # exit()
     timer.toc()
     print ('Detection took {:.3f}s for '
            '{:d} object proposals').format(timer.total_time, boxes.shape[0])
 
     # Visualize detections for each class
-    CONF_THRESH = 0.8
+    CONF_THRESH = 0.68
     NMS_THRESH = 0.3
     for cls in classes:
         cls_ind = CLASSES.index(cls)
@@ -138,8 +140,8 @@ def parse_args():
     parser.add_argument('--cpu', dest='cpu_mode',
                         help='Use CPU mode (overrides --gpu)',
                         action='store_true')
-    parser.add_argument('--net', dest='demo_net', help='Network to use [vgg16]',
-                        choices=NETS.keys(), default='vgg16')
+    parser.add_argument('--net', dest='demo_net', help='Network to use [caffenet]',
+                        choices=NETS.keys(), default='caffenet')
 
     args = parser.parse_args()
 
@@ -173,6 +175,8 @@ if __name__ == '__main__':
 
     print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
     print 'Demo for data/demo/001551.jpg'
+
+    demo(net,'ped2Big',('person','car'))
 
     #demo(net, 'happy', ('sofa', 'tvmonitor'))
 
