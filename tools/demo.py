@@ -168,6 +168,8 @@ if __name__ == '__main__':
 
     print '\n\nLoaded network {:s}'.format(caffemodel)
 
+
+
     print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
     print 'Demo for data/demo/000004.jpg'
     #demo(net, 'happy1', ('car',))
@@ -177,7 +179,5 @@ if __name__ == '__main__':
     print 'Demo for data/demo/001551.jpg'
 
     demo(net,'ped2Big',('person','car'))
-
-    #demo(net, 'happy', ('sofa', 'tvmonitor'))
 
     plt.show()
